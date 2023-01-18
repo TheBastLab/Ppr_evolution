@@ -1,5 +1,5 @@
-# Ppr_evolution
-Ppr genome with haplotpye specific analyses and populations
+# Platynothrus peltifer genome analysis
+*Platynothrus peltifer* genome with haplotype-specific analyses 
 
 
 
