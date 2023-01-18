@@ -1,10 +1,39 @@
-# Platynothrus peltifer genome analysis
+# *Platynothrus peltifer* genome analysis
 *Platynothrus peltifer* genome with haplotype-specific analyses 
 
+## Table of contents
+* [Genome assembly pipeline](#Genome-assembly-pipeline)
 
+## Genome assembly pipeline
 
-This is the github for the Ppr genome project.
+### *k*-mer analysis
 
+### *De novo* assembly
+
+### Omni-C scaffolding 
+
+[bwa](https://github.com/lh3/bwa) version 0.7.15
+[hicstuff](https://github.com/koszullab/hicstuff) version 3.1.1
+
+```sh
+hicstuff pipeline -e 100 -a bwa -g assembly.fasta -m iterative -o hicstuff_out omnic.trimmed.end1.fastq omnic.trimmed.end2.fastq
+```
+
+[instaGRAAL](https://github.com/koszullab/instaGRAAL) version 0.1.6 no-opengl branch
+
+```sh
+instagraal --level 5 --cycles 100 hicstuff_out assembly.fasta instagraal_out
+```
+
+```sh
+instagraal-polish -m polishing -f assembly.purged.fasta -j NNNNNNNNNN \
+	-i instagraal_out/hicstuff_out/test_mcmc5/info_frags.txt \
+	-o assembly.hic_scaffolds.fasta
+```
+
+### Gap filling
+
+### Polishing 
 
 ## TO DO
 1. please add all paths to the basic data
