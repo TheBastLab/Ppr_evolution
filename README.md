@@ -33,3 +33,4 @@ VCF provided by Shan: Ppr.merged.vcf.gz
 - Filtering: VCFtools (Ppr.SHAN.filtered.recode.vcf) # Hardfiltering: Ppr.SHAN.filtered_GATKhard.vcf.gz
 
 Path_to_data: /home/hoeztopr/Scratch/hoeztopr/nucdiv/SHAN_VCF
+123
