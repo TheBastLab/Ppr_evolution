@@ -3544,11 +3544,15 @@
      inkscape:window-x="72"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g10" /><g
+     inkscape:current-layer="g8516" /><g
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="kat_hist"
      transform="matrix(1.3333333,0,0,-1.3333333,0,576)"><path
+       d="M 0,0 H 576 V 432 H 0 Z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path12"
+       inkscape:connector-curvature="0" /><path
        d="M 47.81,41.96 H 565.2 v 364.6 H 47.81 Z"
        style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path14"
