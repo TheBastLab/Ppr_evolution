@@ -107,6 +107,7 @@ instagraal-polish -m polishing -f assembly.purged.fasta -j NNNNNNNNNN \
 	
 ### 1.6 Gap filling
 Version : 1.1.1
+
 	/home/shangao/Software/TGS-GapCloser/TGS-GapCloser.sh \
 	--scaff ../Ppr_instagrall.FINAL.sort.fasta \
 	--reads /home/shangao/Data/../mites/reads/PacBio/Ppr/m64093_200831_134054.Q20.fastq.gz \
@@ -117,6 +118,7 @@ Version : 1.1.1
 
 ### 1.7 Polishing 
 v1.0.3
+
 	hypo -d Ppr_without_correct.scaff_seqs \
 	-r /home/shangao/Data/../mites/reads/PacBio/Ppr/m64093_200831_134054.Q20.fastq.gz \
 	-s 200m -c 100 -b mapped-ccs.sorted.bam -t 48 \
