@@ -38,8 +38,16 @@ smudgeplot.py plot kmcdb_L"$L"_U"$U"_coverages.tsv
 
 [hifiasm](https://github.com/chhylp123/hifiasm) version 0.16.1-r375
 ```sh
-hifiasm -o assembly hifi_reads.fastq.gz
+/home/shangao/software/hifiasm-0.16.1/hifiasm -o test -t 50 /home/shangao/Data/../mites/reads/PacBio/Ppr/m64093_200831_134054.Q20.fastq.gz
 ```
+
+### Tell-Seq linked reads improve assembly by Scaff10X
+	/home/shangao/Software/Assembly/Scaff10X/src/scaff10x \
+    	-nodes 30 -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link 8 -block 50000 -plot Ppr_result/barcode_lengtg.png \
+    	/home/shangao/Scratch/gaoshan/hifiasm/genome/Ppr_new/Ppr_new.fa \
+    genome-BC_1.fastq.gz \
+    genome-BC_2.fastq.gz \
+    output_scaffolds.fasta
 
 ### Omni-C scaffolding 
 
