@@ -75,21 +75,39 @@ instagraal-polish -m polishing -f assembly.purged.fasta -j NNNNNNNNNN \
 
 [TGS-GapCloser](https://github.com/BGI-Qingdao/TGS-GapCloser) version 1.1.1
 
+```sh
 TGS-GapCloser.sh --scaff scaffolds.fasta \
-	--reads /home/shangao/Data/../mites/reads/PacBio/Ppr/m64093_200831_134054.Q20.fastq.gz \
+	--reads hifi_reads.fastq.gz \
 	--output gap_filled \
 	--tgstype pb --ne \
 	--minmap_arg '-x asm20'
+```
 
 ### Polishing 
 
 [HyPo](https://github.com/kensung-lab/hypo) v1.0.3
+[minimap2](https://github.com/lh3/minimap2) version 2.24r1122
+[SAMtools](https://github.com/samtools/samtools) version 1.11
 ```sh
+minimap2 --secondary=no --MD -ax map-hifi gap_filled.fasta hifi_reads.fastq.gz | samtools view -Sb - > mapped-ccs.bam
+samtools sort -o mapped-ccs.sorted.bam mapped-ccs.bam
+samtools index mapped-ccs.sorted.bam
+
 hypo -d gap_filled.fasta -r hifi_reads.fastq.gz -s 200m -c 100 -b mapped-ccs.sorted.bam \
 	-o polished.fasta
 ```
 
 ### Assembly evaluation
+
+
+[KAT](https://github.com/TGAC/KAT) version 2.4.2
+```sh
+kat comp -o kat_comp_hap0 hifi_reads.fastq.gz hap0.fasta
+cat hapA.fasta hapB.fasta > phased.fasta
+kat comp -o kat_comp_phased hifi_reads.fastq.gz phased.fasta
+kat comp -o kat_comp_hapA hifi_reads.fastq.gz hapA.fasta
+kat comp -o kat_comp_hapB hifi_reads.fastq.gz hapB.fasta
+```
 
 [BUSCO](https://busco.ezlab.org/) version 5.0.0
 
@@ -98,10 +116,24 @@ busco -i final_scaffolds.fasta -m genome -o busco_out_arachnida_odb10 -l arachni
 busco -i final_scaffolds.fasta -m genome -o busco_out_arthropoda_odb10 -l arthropoda_odb10
 ```
 
-[BlobTools2](https://blobtoolkit.genomehubs.org/blobtools2/) version 2.3.3
 [minimap2](https://github.com/lh3/minimap2) version 2.24r1122
+[SAMtools](https://github.com/samtools/samtools) version 1.11
 ```sh
-minimap2 -ax map-hifi hap0.fasta hifi_reads.fastq.gz 
+minimap2 -ax map-hifi hap0.fasta hifi_reads.fastq.gz | samtools view -b | samtools sort -o minimap2_hifi.hap0.bam
+```
+
+[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) version 2.6.0
+```sh
+blastn -query hap0.fasta -db nt -outfmt "6 qseqid staxids bitscore std sscinames scomnames" \
+	-max_hsps 1 -evalue 1e-25 -out blast.out
+```
+
+[BlobTools2](https://blobtoolkit.genomehubs.org/blobtools2/) version 2.3.3
+```sh
+blobtools add --fasta hap0.fasta --cov minimap2_hifi.hap0.bam --hits blast.out \
+	--busco busco_out_arachnida_odb10/run_arachnida_odb10/full_table.tsv \
+	--taxdump taxdump --create hap0_BLOBDIR
+blobtools view hap0_BLOBDIR
 ```
 
 ## Genome annotation
