@@ -109,6 +109,9 @@ kat comp -o kat_comp_hapA hifi_reads.fastq.gz hapA.fasta
 kat comp -o kat_comp_hapB hifi_reads.fastq.gz hapB.fasta
 ```
 
+
+<img src="./fig/figure_kmer_comp.svg" width=800>
+
 [BUSCO](https://busco.ezlab.org/) version 5.0.0
 
 ```sh
@@ -135,6 +138,8 @@ blobtools add --fasta hap0.fasta --cov minimap2_hifi.hap0.bam --hits blast.out \
 	--taxdump taxdump --create hap0_BLOBDIR
 blobtools view hap0_BLOBDIR
 ```
+
+<img src="./fig/final_scaffolds_BLOBDIR.blob.circle.svg" width=600>
 
 ## Genome annotation
 
