@@ -149,27 +149,58 @@ blobtools view hap0_BLOBDIR
 1. please add all paths to the basic data
 
 ## VCF calling
-Data
-- reference: Ppr_instagrall.polished.FINAL.softmask.fa
-- bamfiles: /home/hoeztopr/Data/hoeztopr/VCFcalling/GATK_version/bamfilenames.list (/RAID/Data/gaoshan/hifiasm_tell-sort/)
-- haplotypes: /home/hoeztopr/Data/hoeztopr/VCFcalling/GATK_version #generated with GATK HaplotypeCaller
 
 1. GATK: /home/hoeztopr/Data/hoeztopr/Scripts/vcfcall.txt
 software: /NVME/Software/popgen/gatk-4.1.9.0/gatk
-- In short: CombineGVCF - GenotypeGVCFs - SelectVariants
+- In short: mapping population data to reference - HaplotypeCaller - CombineGVCF - GenotypeGVCFs - SelectVariants
 
-Path_to_data: /home/hoeztopr/Data/hoeztopr/VCFcalling/GATK_version
+```sh
+HaplotypeCaller -R /home/hoeztopr/Data/hoeztopr/Ppr/genomes/DE/Ppr.hap0.softmasked.fasta \
+        --emit-ref-confidence GVCF \
+        -I /home/hoeztopr/Data/hoeztopr/Ppr/mapped/DE/T507.sorted.marked_duplicates.bam \
+        -O /home/hoeztopr/Data/hoeztopr/Ppr/gvcfs/DE/Ppr_gatk_haploT507
+```
+for each individual
+```sh
+/NVME/Software/popgen/gatk-4.1.9.0/gatk CombineGVCFs \
+-R /home/hoeztopr/Data/hoeztopr/Ppr/genomes/DE/Ppr.hap0.softmasked.fasta \
+-V Ppr_gatk_haploT501 \
+-V Ppr_gatk_haploT502 \
+-V Ppr_gatk_haploT505 \
+-V Ppr_gatk_haploT506 \
+-V Ppr_gatk_haploT507 \
+-O Ppr_merged.g.vcf
+```
+```sh
+/NVME/Software/popgen/gatk-4.1.9.0/gatk GenotypeGVCFs \
+        -R /home/hoeztopr/Data/hoeztopr/Ppr/genomes/DE/Ppr.hap0.softmasked.fasta \
+        -V Ppr_merged.g.vcf \
+        -O /home/hoeztopr/Data/hoeztopr/Ppr/vcf/Ppr_gatk_all.vcf
+```
+```sh
+/home/hoeztopr/Software/popgen/gatk-4.2.2.0/gatk ValidateVariants \
+--gvcf \
+-R /home/hoeztopr/Data/hoeztopr/Ppr/genomes/Japan_T504_hifiasm_hap0_scaff10x_softmask.fa \
+-V Ppr_JP_gatk_all.vcf
+```
+```sh
+/NVME/Software/popgen/gatk-4.1.9.0/gatk SelectVariants \
+-select-type SNP \
+-V Ppr_gatk_all.vcf.gz \
+-O Ppr_gatk_all.snp.vcf.gz
+```
+```sh
+/NVME/Software/popgen/gatk-4.1.9.0/gatk VariantFiltration \
+-V Ppr_gatk_all.snp.vcf.gz \
+--filter-expression "QD <2.0 || MQ <40.0 || FS >60.0 || SOR >3.0 || ReadPosRankSum < -8.0 || MQRankSum < -12.5" \
+--filter-name "PASS" \
+-O Ppr_gatk_all.snp.f.vcf.gz
+```
+```sh
+/NVME/Software/popgen/gatk-4.1.9.0/gatk VariantsToTable \
+-V Ppr_gatk.SNP.filtered.vcf.gz \
+-F CHROM -F POS -F REF -F ALT -F MULTI-ALLELIC -F TYPE -GF AD \
+-O Ppr_gatk.SNP.filtered.table
+```
 
-2. Freebayes: /home/hoeztopr/Data/hoeztopr/Scripts/Freebayes.txt
-software= ~/Software/popgen/freebayes1.3.0/freebayes-v1.3.0-1
-- In short: version a) simple call variants -> Ppr.fb.vcf b) with population information -> Ppr.pop.fb.vcf 
-- Filtering: GATK SelectVariants(Ppr.fb.gatk.snp.gz) + Hardfiltering:VariantFiltration (Ppr.fb.gatk.snp.f.gz)
 
-Path_to_data: /home/hoeztopr/Data/hoeztopr/VCFcalling/Freebayes
-
-3. TELL-sort
-VCF provided by Shan: Ppr.merged.vcf.gz
-- Filtering: VCFtools (Ppr.SHAN.filtered.recode.vcf) # Hardfiltering: Ppr.SHAN.filtered_GATKhard.vcf.gz
-
-Path_to_data: /home/hoeztopr/Scratch/hoeztopr/nucdiv/SHAN_VCF
-123
