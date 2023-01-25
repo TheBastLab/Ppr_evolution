@@ -3,6 +3,8 @@
 
 ## Table of contents
 * [Genome assembly pipeline](#Genome-assembly-pipeline)
+* [Genome annotation](#Genome-annotation)
+* [Variant calling](#Variant-calling)
 
 ## Genome assembly pipeline
 
@@ -143,12 +145,7 @@ blobtools view hap0_BLOBDIR
 
 ## Genome annotation
 
-
-
-## TO DO
-1. please add all paths to the basic data
-
-## VCF calling
+## Variant calling
 
 1. GATK: /home/hoeztopr/Data/hoeztopr/Scripts/vcfcall.txt
 software: /NVME/Software/popgen/gatk-4.1.9.0/gatk
