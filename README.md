@@ -43,13 +43,13 @@ smudgeplot.py plot kmcdb_L"$L"_U"$U"_coverages.tsv
 hifiasm -o assembly hifi_reads.fastq.gz
 ```
 
-### TELL-seq linked reads improve assembly by Scaff10X
-	/home/shangao/Software/Assembly/Scaff10X/src/scaff10x \
-    -nodes 30 -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link 8 -block 50000 -plot Ppr_result/barcode_lengtg.png \
-    /home/shangao/Scratch/gaoshan/hifiasm/genome/Ppr_new/Ppr_new.fa \
-    genome-BC_1.fastq.gz \
-    genome-BC_2.fastq.gz \
-    output_scaffolds.fastae
+### Linked-read scaffolding
+
+[Scaff10X](https://github.com/wtsi-hpag/Scaff10X) version 4.2
+```sh
+scaff10x -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link 8 -block 50000 -plot barcode_length.png \
+    assembly.fasta genome-BC_1.fastq.gz genome-BC_2.fastq.gz  linked_scaffolds.fasta
+```
 
 ### Omni-C scaffolding 
 
