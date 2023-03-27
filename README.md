@@ -4,6 +4,7 @@
 ## Table of contents
 * [Initial analyses on HiFi reads](#Initial-analyses-on-HiFi-reads)
 * [Collapsed chromosome-level assembly pipeline](#Collapsed-chromosome-level-assembly-pipeline)
+* [Collapsed assembly pipeline for Italian and Russian Ppr](#Collapsed-assembly-pipeline-for-Italian-and-Russian-Ppr)
 * [Phased assembly pipeline](#Phased-assembly-pipeline)
 * [Assembly evaluation](#Assembly-evaluation)
 * [Genome annotation](#Genome-annotation)
@@ -104,7 +105,56 @@ hypo -d gap_filled.fasta -r hifi_reads.fastq.gz -s 200m -c 100 -b mapped-ccs.sor
 	-o polished.fasta
 ```
 
+## Collapsed assembly pipeline for Italian and Russian Ppr
+
+### *De novo* assembly
+
+[Flye]() v2.9
+```sh
+flye -o flye_v29_default --pacbio-raw hifi_reads.fastq.gz 
+```
+
+[hifiasm](https://github.com/chhylp123/hifiasm) version 0.16.1-r375
+```sh
+hifiasm -o assembly hifi_reads.fastq.gz
+```
+
+### Haplotig purging
+
+[purge_dups](https://github.com/dfguan/purge_dups) v1.2.5
+```sh
+
+```
+
+### TELL-seq scaffolding 
+
+### RagTag scaffolding
+
+### Gap filling
+
+### Polishing
+
 ## Phased assembly pipeline 
+
+### *De novo* assembly
+
+[Flye]() v2.9
+```sh
+flye -o flye_v29_default --pacbio-raw hifi_reads.fastq.gz 
+```
+
+### TELL-Seq scaffolding
+
+### Haplotype separation
+
+[purge_dups](https://github.com/dfguan/purge_dups) v1.2.5
+```sh
+
+```
+
+### RagTag scaffolding
+
+
 
 ## Assembly evaluation
 
