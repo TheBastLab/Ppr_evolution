@@ -2,11 +2,14 @@
 *Platynothrus peltifer* genome with haplotype-specific analyses 
 
 ## Table of contents
-* [Genome assembly pipeline](#Genome-assembly-pipeline)
+* [Initial analyses on HiFi reads](#Initial-analyses-on-HiFi-reads)
+* [Collapsed chromosome-level assembly pipeline](#Collapsed-chromosome-level-assembly-pipeline)
+* [Phased assembly pipeline](#Phased-assembly-pipeline)
+* [Assembly evaluation](#Assembly-evaluation)
 * [Genome annotation](#Genome-annotation)
 * [Variant calling](#Variant-calling)
 
-## Genome assembly pipeline
+## Initial analyses on HiFi reads
 
 ### *k*-mer analysis
 
@@ -35,6 +38,8 @@ smudgeplot.py hetkmers -o kmcdb_L"$L"_U"$U" < kmcdb_L"$L"_U"$U".dump
 
 smudgeplot.py plot kmcdb_L"$L"_U"$U"_coverages.tsv
 ```
+
+## Collapsed chromosome-level assembly pipeline
 
 ### *De novo* assembly
 
@@ -99,8 +104,9 @@ hypo -d gap_filled.fasta -r hifi_reads.fastq.gz -s 200m -c 100 -b mapped-ccs.sor
 	-o polished.fasta
 ```
 
-### Assembly evaluation
+## Phased assembly pipeline 
 
+## Assembly evaluation
 
 [KAT](https://github.com/TGAC/KAT) version 2.4.2
 ```sh
@@ -110,9 +116,6 @@ kat comp -o kat_comp_phased hifi_reads.fastq.gz phased.fasta
 kat comp -o kat_comp_hapA hifi_reads.fastq.gz hapA.fasta
 kat comp -o kat_comp_hapB hifi_reads.fastq.gz hapB.fasta
 ```
-
-
-<img src="./fig/figure_kmer_comp.svg" width=800>
 
 [BUSCO](https://busco.ezlab.org/) version 5.0.0
 
