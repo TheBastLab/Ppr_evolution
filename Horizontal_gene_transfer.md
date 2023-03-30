@@ -1,8 +1,8 @@
 # Horizontal gene transfer (HGT) 
 ## We used the pipeline from https://github.com/reubwn/hgt
-## software version
+## 1.software version
     diamond  v0.9.21.122
-      
+## 2.command line      
     export pep=hap0_UTR_longest.pep
     export gff=hap0_add_UTR.gff3
     
