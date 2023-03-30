@@ -10,5 +10,5 @@
 * [Variant calling](https://github.com/TheBastLab/Ppr_evolution/blob/main/variant_calling.md)
 * [Genome annotation](https://github.com/TheBastLab/Ppr_evolution/blob/main/Genome_annotation.md)
 * [Differential expression of alleles](https://github.com/TheBastLab/Ppr_evolution/blob/main/Differential_expression_of_alleles.md)
-
+* [Horizontal gene transfer](https://github.com/TheBastLab/Ppr_evolution/blob/main/Horizontal_gene_transfer.md)
 
