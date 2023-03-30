@@ -1,4 +1,5 @@
 # Genome annotation
+
 ## software version
 	EDTA v1.9.8 	
 	Bedtools Version: v2.26.0
@@ -18,7 +19,7 @@
 	  EDTA.pl --genome Ppr.FINAL.sort.fasta --sensitive 1 --anno 1  --threads 50 --overwrite 1
 ### 1.2 Softmask
 	  bedtools maskfasta -fi Ppr.FINAL.sort.fasta.masked -fo Ppr.FINAL.sort.softmask.fasta -bed Ppr_instagrall.polished.fa.mod.EDTA.TEanno.gff3 -soft
-
+	  
 ## 2. Gene Structure Prediction
 ### 2.1 RNA-Seq Mapping and Trinity assembly
 	STAR \
