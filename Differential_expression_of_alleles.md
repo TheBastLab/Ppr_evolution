@@ -1,8 +1,8 @@
 # Differential expression of alleles
 ## software version
-  STAR v2.5.1a
-  GFOLD V1.1.4
-  samtools v1.11
+    STAR v2.5.1a
+    GFOLD V1.1.4
+    samtools v1.11
 ## 1. RNA-Seq Mapping
     STAR \
     --genomeDir STAR \
