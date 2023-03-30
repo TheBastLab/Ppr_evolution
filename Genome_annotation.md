@@ -1,4 +1,4 @@
-# Differential expression of alleles (DEA)
+# Genome annotation
 ## software version
 EDTA v1.9.8 
 Bedtools Version: v2.26.0
