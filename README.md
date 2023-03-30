@@ -9,7 +9,7 @@
 * [Assembly evaluation](https://github.com/TheBastLab/Ppr_evolution/blob/main/assembly_evaluation.md)
 * [Genome annotation](https://github.com/TheBastLab/Ppr_evolution/blob/main/genome_annotation.md)
 * [Variant calling](https://github.com/TheBastLab/Ppr_evolution/blob/main/variant_calling.md)
-
+* [Genome annotation](https://github.com/TheBastLab/Ppr_evolution/blob/main/Genome_annotation.md)
 
 
 
