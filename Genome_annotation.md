@@ -3,6 +3,7 @@
 ## software version
 	EDTA v1.9.8 	
 	Bedtools Version: v2.26.0
+	STAR v2.5.1a
 	Trinity v2.1.1
 	PASA 2.5.2
 	stringtie v2.2.0
