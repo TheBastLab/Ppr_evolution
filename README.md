@@ -11,4 +11,5 @@
 * [Genome annotation](https://github.com/TheBastLab/Ppr_evolution/blob/main/Genome_annotation.md)
 * [Differential expression of alleles](https://github.com/TheBastLab/Ppr_evolution/blob/main/Differential_expression_of_alleles.md)
 * [Horizontal gene transfer](https://github.com/TheBastLab/Ppr_evolution/blob/main/Horizontal_gene_transfer.md)
+* [Wolbachia](https://github.com/TheBastLab/Ppr_evolution/blob/main/Wolbachia.md)
 
