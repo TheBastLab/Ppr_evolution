@@ -10,7 +10,7 @@ flye -o flye_v29_default --pacbio-raw hifi_reads.fastq.gz
 
 [hifiasm](https://github.com/chhylp123/hifiasm) version 0.16.1-r375
 ```sh
-hifiasm -o assembly hifi_reads.fastq.gz
+hifiasm -o assembly -l 2 hifi_reads.fastq.gz
 ```
 
 ## Haplotig purging
@@ -20,7 +20,7 @@ For both flye and hifiasm assemblies.
 [minimap2](https://github.com/lh3/minimap2) version 2.24-r1122
 [purge_dups](https://github.com/dfguan/purge_dups) version 1.2.5
 ```sh
-pri_asm="draf"
+pri_asm="draft_assembly.fasta"
 
 minimap2 -x map-hifi ${pri_asm}.fasta hifi_reads.fastq.gz | gzip -c - > minimap2_hifi.scaffolded.paf.gz
 
