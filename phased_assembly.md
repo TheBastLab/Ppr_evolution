@@ -32,7 +32,7 @@ ust10x -sz 200000000 \
 [Scaff10X](https://github.com/wtsi-hpag/Scaff10X) version 4.2
 ```
 scaff_reads ./input.dat tellseq.end1.fastq.gz tellseq.end2.fastq.gz
-scaff10x -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link 8 -block 50000 -plot barcode_length.png draft_assembly.fasta tellseq.end1.fastq.gz tellseq.end2.fastq.gz scaff10x_scaffolds.fasta
+scaff10x -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link 8 -block 50000 -plot barcode_length.png draft_assembly.fasta tellseq.end1.fastq.gz tellseq.end2.fastq.gz tellseq_scaffolds.fasta
 ```
 
 ## Haplotype separation
@@ -40,7 +40,7 @@ scaff10x -longread 1 -gap 100 -matrix 2000 -reads 10 -score 10 -edge 50000 -link
 [minimap2](https://github.com/lh3/minimap2) version 2.24-r1122
 [purge_dups](https://github.com/dfguan/purge_dups) version 1.2.5
 ```sh
-pri_asm="scaffolded"
+pri_asm="tellseq_scaffolds.fasta"
 
 minimap2 -x map-hifi ${pri_asm}.fasta hifi_reads.fastq.gz | gzip -c - > minimap2_hifi.scaffolded.paf.gz
 
@@ -54,14 +54,14 @@ hist_plot.py -c cutoffs PB.stat purge_dups.${pri_asm}.png
 
 purge_dups -2 -T cutoffs -c PB.base.cov $pri_asm.split.self.paf.gz > dups.bed 2> purge_dups.log
 get_seqs dups.bed $pri_asm
-mv purged.fa scaffolded.alt1.fasta
-mv hap.fa scaffolded.alt2.fasta
+mv purged.fa scaffolds.alt1.fasta
+mv hap.fa scaffolds.alt2.fasta
 ```
 
 ## RagTag scaffolding
 
 [RagTag](https://github.com/malonge/RagTag) version 2.1.0
 ```sh
-ragtag.py scaffold -o ragtag_alt1_scaffolded_alt2 scaffolded.alt2.fasta scaffolded.alt1.fasta
-ragtag.py scaffold -o ragtag_alt2_scaffolded_alt2 scaffolded.alt1.fasta scaffolded.alt2.fasta
+ragtag.py scaffold -o ragtag_alt1_scaffolded_alt2 scaffolds.alt2.fasta scaffolds.alt1.fasta
+ragtag.py scaffold -o ragtag_alt2_scaffolded_alt2 scaffolds.alt1.fasta scaffolds.alt2.fasta
 ```
