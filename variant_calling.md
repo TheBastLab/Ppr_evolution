@@ -46,23 +46,21 @@ samtools index -@ 40 $i.IT.sorted.removed_duplicates.bam
 rm -f $i.IT.sorted.bam
 rm -f $i.IT.bam
 ```
-##### compare duplication removed bam with regular bam 
-(not part of regular workflow)
-	```
-	/home/hoeztopr/Data/hoeztopr/Scripts/comparebams.sh:
-        java -jar /NVME/Software/picard.jar CompareSAMs \
-	$i.sorted.bam \
-	$i.sorted.marked_duplicates.bam \
-	O=$i.comparison.tsv
-	```
-	
-### get sample names (not necessary for workflow)
+##### compare duplication removed bam with regular bam (not part of regular workflow)
+```
+/home/hoeztopr/Data/hoeztopr/Scripts/comparebams.sh:
+java -jar /NVME/Software/picard.jar CompareSAMs \
+$i.sorted.bam \
+$i.sorted.marked_duplicates.bam \
+O=$i.comparison.tsv
+```
+##### get sample names (not necessary for workflow)
 ```
 /NVME/Software/popgen/gatk-4.1.9.0/gatk GetSampleName \
      -I /RAID/Data/gaoshan/gaoshan/hifiasm_tell-seq/tell_sort/tell_sort_out/Ppr_T502/Ppr_T502_temp/Ppr_T502.sorted.bam \
      -O sample_nameT502.txt
 ```
-### check if bam is good to go for GATK 
+###### check if bam is good to go for GATK 
 you can also skip this
 ```
 gatk ValidateSamFile --INPUT=INDIVIDUAL_readgroup_fixmate_coord_optrem.bam --IGNORE=MISSING_TAG_NM --REFERENCE_SEQUENCE=REFGENOME.fasta
