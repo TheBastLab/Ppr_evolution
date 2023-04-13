@@ -1,4 +1,4 @@
-## data needed for variant calling
+### data needed for variant calling
 ref=/home/hoeztopr/Data/hoeztopr/Ppr/genomes/DE/Ppr.hap0.softmasked.fasta
 bam=Ppr*sorted.removed_duplicates.bam #generated with mapping.sh
 
