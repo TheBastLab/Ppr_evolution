@@ -60,7 +60,7 @@ O=$i.comparison.tsv
      -I /RAID/Data/gaoshan/gaoshan/hifiasm_tell-seq/tell_sort/tell_sort_out/Ppr_T502/Ppr_T502_temp/Ppr_T502.sorted.bam \
      -O sample_nameT502.txt
 ```
-###### check if bam is good to go for GATK 
+##### check if bam is good to go for GATK 
 you can also skip this
 ```
 gatk ValidateSamFile --INPUT=INDIVIDUAL_readgroup_fixmate_coord_optrem.bam --IGNORE=MISSING_TAG_NM --REFERENCE_SEQUENCE=REFGENOME.fasta
@@ -71,7 +71,8 @@ gatk ValidateSamFile --INPUT=INDIVIDUAL_readgroup_fixmate_coord_optrem.bam --IGN
 [GATK](https://gatk.broadinstitute.org/hc/en-us) version 4.1.9.0
 
 In short: mapping population data to reference - HaplotypeCaller - CombineGVCF - GenotypeGVCFs - SelectVariants
-Comment: Note down how many total variants were processed after each step. 
+##### Comment: Note down how many total variants were processed after each step.
+##### Comment: run HaploypeCaller for each individual simultaneasly (to save time)
 ```sh
 HaplotypeCaller -R hap0.softmasked.fasta \
         --emit-ref-confidence GVCF \
@@ -80,7 +81,6 @@ HaplotypeCaller -R hap0.softmasked.fasta \
         -O Ppr_gatk_haploT507
 ```
 
-For each individual
 ```sh
 GATK CombineGVCFs -R hap0.softmasked.fasta \
 	-V Ppr_gatk_haploT501 \
