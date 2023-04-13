@@ -20,26 +20,34 @@ samtools faidx Ppr.italy.hap0.softmasked.fasta
 /home/hoeztopr/Data/hoeztopr/Scripts/mapping.sh:
 ```
 #mapping (Italian Population as example)
+```
 bwa mem -t 40 -R "@RG\tID:${i}\tSM:${i}\tLB:${i}\tPL:Illumina" \
 /RAID/Data/Mites/Genomes/Ppr/Italy/Ppr.italy.hap0.softmasked.fasta \
 /RAID/Data/Mites/Reads/TELLSeq/Corrected_Reads/Ppr/Italy/German_ref_cleanReads/03Italy_R2_${i}_raw_val_2.fq.gz \
 /RAID/Data/Mites/Reads/TELLSeq/Corrected_Reads/Ppr/Italy/German_ref_cleanReads/03Italy_R1_${i}_raw_val_1.fq.gz > $i.IT.sam
+```
 #compress to bam and sort
+```
 samtools view -@ 40 -bS $i.IT.sam > $i.IT.bam
 samtools sort -@ 40 $i.IT.bam -o $i.IT.sorted.bam
 rm -f $i.IT.sam
+```
 #mark and remove duplication
+```
 java -jar /NVME/Software/picard.jar MarkDuplicates \
 I=$i.IT.sorted.bam \
 O=$i.IT.sorted.removed_duplicates.bam \
 M=$i.IT.removed_dup_metrics.txt \
 REMOVE_DUPLICATES=true \
 REMOVE_SEQUENCING_DUPLICATES=true
+```
+```
 samtools index -@ 40 $i.IT.sorted.removed_duplicates.bam
 rm -f $i.IT.sorted.bam
 rm -f $i.IT.bam
-
-        ##### compare duplication removed bam with regular bam
+```
+##### compare duplication removed bam with regular bam 
+(not part of regular workflow)
 	```
 	/home/hoeztopr/Data/hoeztopr/Scripts/comparebams.sh:
         java -jar /NVME/Software/picard.jar CompareSAMs \
