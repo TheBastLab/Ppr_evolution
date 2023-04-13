@@ -1,12 +1,8 @@
-## software
-gatk=/NVME/Software/popgen/gatk-4.1.9.0/gatk
-
-## data
+## data needed for variant calling
 ref=/home/hoeztopr/Data/hoeztopr/Ppr/genomes/DE/Ppr.hap0.softmasked.fasta
 bam=Ppr*sorted.removed_duplicates.bam #generated with mapping.sh
 
-
-## Preparation
+## Prepare the data
 #### build dict for genome
 ```
 /NVME/Software/popgen/gatk-4.1.9.0/gatk CreateSequenceDictionary \
