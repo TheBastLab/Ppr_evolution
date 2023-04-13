@@ -17,14 +17,14 @@ samtools faidx Ppr.russia.hap0.softmasked.fasta
 ```
 #### generate bam files 
 ```
-mapping.sh
+/home/hoeztopr/Data/hoeztopr/Scripts/mapping.sh
 ```
         #### deduplication removing with picard
-        deduplication.sh
+        /home/hoeztopr/Data/hoeztopr/Scripts/deduplication.sh
         samtools index -@ 60 T506.sorted.marked_duplicates.bam
 
         ##### compare duplication removed bam with regular bam
-        comparebams.sh
+        /home/hoeztopr/Data/hoeztopr/Scripts/comparebams.sh
 ### Check bamfiles
 ```
 /NVME/Software/popgen/gatk-4.1.9.0/gatk GetSampleName \
