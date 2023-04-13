@@ -71,10 +71,11 @@ gatk ValidateSamFile --INPUT=INDIVIDUAL_readgroup_fixmate_coord_optrem.bam --IGN
 [GATK](https://gatk.broadinstitute.org/hc/en-us) version 4.1.9.0
 
 In short: mapping population data to reference - HaplotypeCaller - CombineGVCF - GenotypeGVCFs - SelectVariants
-
+Comment: Note down how many total variants were processed after each step. 
 ```sh
 HaplotypeCaller -R hap0.softmasked.fasta \
         --emit-ref-confidence GVCF \
+	--native-pair-hmm-threads 8 \
         -I /T507.sorted.marked_duplicates.bam \
         -O Ppr_gatk_haploT507
 ```
@@ -120,4 +121,9 @@ GATK VariantsToTable \
 	-V Ppr_gatk.SNP.filtered.vcf.gz \
 	-F CHROM -F POS -F REF -F ALT -F MULTI-ALLELIC -F TYPE -GF AD \
 	-O Ppr_gatk.SNP.filtered.table
+```
+
+##### Counting the filtered SNPs
+```
+vcftools --gzvcf Ppr_IT_gatk.SNP.filtered.vcf.gz --out Ppr_IT_gatk.SNP.filtered.removed.vcf.gz --remove-filtered-all
 ```
