@@ -19,20 +19,20 @@ samtools faidx Ppr.italy.hap0.softmasked.fasta
 ```
 /home/hoeztopr/Data/hoeztopr/Scripts/mapping.sh:
 ```
-#mapping (Italian Population as example)
+##### mapping with bwa (Italian Population as example)
 ```
 bwa mem -t 40 -R "@RG\tID:${i}\tSM:${i}\tLB:${i}\tPL:Illumina" \
 /RAID/Data/Mites/Genomes/Ppr/Italy/Ppr.italy.hap0.softmasked.fasta \
 /RAID/Data/Mites/Reads/TELLSeq/Corrected_Reads/Ppr/Italy/German_ref_cleanReads/03Italy_R2_${i}_raw_val_2.fq.gz \
 /RAID/Data/Mites/Reads/TELLSeq/Corrected_Reads/Ppr/Italy/German_ref_cleanReads/03Italy_R1_${i}_raw_val_1.fq.gz > $i.IT.sam
 ```
-#compress to bam and sort
+##### compress to bam and sort
 ```
 samtools view -@ 40 -bS $i.IT.sam > $i.IT.bam
 samtools sort -@ 40 $i.IT.bam -o $i.IT.sorted.bam
 rm -f $i.IT.sam
 ```
-#mark and remove duplication
+##### mark and remove duplication
 ```
 java -jar /NVME/Software/picard.jar MarkDuplicates \
 I=$i.IT.sorted.bam \
@@ -60,8 +60,7 @@ O=$i.comparison.tsv
      -I /RAID/Data/gaoshan/gaoshan/hifiasm_tell-seq/tell_sort/tell_sort_out/Ppr_T502/Ppr_T502_temp/Ppr_T502.sorted.bam \
      -O sample_nameT502.txt
 ```
-##### check if bam is good to go for GATK 
-you can also skip this
+##### check if bam is good to go for GATK (you can skip this)
 ```
 gatk ValidateSamFile --INPUT=INDIVIDUAL_readgroup_fixmate_coord_optrem.bam --IGNORE=MISSING_TAG_NM --REFERENCE_SEQUENCE=REFGENOME.fasta
 ```
