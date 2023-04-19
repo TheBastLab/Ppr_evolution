@@ -20,7 +20,7 @@ mapping.sh:
 ##### mapping with bwa
 ```
 bwa mem -t 40 -R "@RG\tID:${i}\tSM:${i}\tLB:${i}\tPL:Illumina" \
-Ppr.italy.hap0.softmasked.fasta \
+Ppr.hap0.softmasked.fasta \
 R2_${i}_raw_val_2.fq.gz \
 R1_${i}_raw_val_1.fq.gz > $i.sam
 ```
