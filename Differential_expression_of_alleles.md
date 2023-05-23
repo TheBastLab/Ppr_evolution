@@ -24,4 +24,4 @@
     gfold diff -s1 hap1 -s2 hap2 -suf .read_cnt -o hap1VShap2.diff
     
 ## 3. Filter GFOLD and RPKM value
-    awk '($7+$6>1)&&($3>0.2||$3<-0.2){print$0}' hap1tohap2.diff > hap1tohap2.diff_rpkm1_gfold0.2.genelist
+    awk '($7+$6>1)&&($3>0.05||$3<-0.05){print$0}' hap1tohap2.diff > hap1tohap2.diff_rpkm1_gfold0.05.genelist
