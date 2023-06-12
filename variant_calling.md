@@ -52,7 +52,7 @@ $i.sorted.bam \
 $i.sorted.marked_duplicates.bam \
 O=$i.comparison.tsv
 ```
-##### get sample names (not necessary for workflow)
+##### get sample names
 ```
 gatk-4.1.9.0/gatk GetSampleName \
      -I $i.sorted.bam \
@@ -73,7 +73,20 @@ GATK HaplotypeCaller -R Ppr.hap0.softmasked.fasta \
         -I $i.sorted.marked_duplicates.bam \
         -O Ppr_gatk_haplo$i
 ```
-
+##### change header ID in vcf for vcf25 (see rename_vcf.sh)
+```
+java -jar /NVME/Software/picard.jar RenameSampleInVcf \
+I=Ppr.RU.gatk_haploT507 \
+O=Ppr.RU.gatk_haploT507.vcf \
+OLD_SAMPLE_NAME=T507 \
+NEW_SAMPLE_NAME=T507_RU
+```
+##### index
+```
+/NVME/Software/popgen/gatk-4.1.9.0/gatk IndexFeatureFile \
+     -I *.vcf
+```
+##### merge 
 ```sh
 GATK CombineGVCFs -R Ppr.hap0.softmasked.fasta \
 	-V Ppr_gatk_haploT501 \
