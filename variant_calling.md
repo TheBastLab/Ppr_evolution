@@ -24,6 +24,13 @@ Ppr.hap0.softmasked.fasta \
 R2_${i}_raw_val_2.fq.gz \
 R1_${i}_raw_val_1.fq.gz > $i.sam
 ```
+##### mapping with minimap2
+```
+minimap2 -ax map-pb \
+../Ppr_instagrall.polished.fa \
+m64093_200831_134054.Q20.fastq.gz \
+| samtools sort -@16 -O BAM -o Ppr_Pacbio.bam -
+```
 ##### compress to bam and sort
 ```
 samtools view -@ 40 -bS $i.sam > $i.bam
