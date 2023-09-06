@@ -89,11 +89,7 @@ NEW_SAMPLE_NAME=T507_RU
 ##### merge 
 ```sh
 GATK CombineGVCFs -R Ppr.hap0.softmasked.fasta \
-	-V Ppr_gatk_haploT501 \
-	-V Ppr_gatk_haploT502 \
-	-V Ppr_gatk_haploT505 \
-	-V Ppr_gatk_haploT506 \
-	-V Ppr_gatk_haploT507 \
+	-V Ppr_gatk_haploxxx \
 	-O Ppr_merged.g.vcf
 ```
 
