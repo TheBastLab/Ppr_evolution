@@ -17,9 +17,9 @@
 
 ## 1. GenomeMask
 ### 1.1 Hardmask
-	  EDTA.pl --genome Ppr.FINAL.sort.fasta --sensitive 1 --anno 1  --threads 50 --overwrite 1
+	  EDTA.pl --genome polished.fasta --sensitive 1 --anno 1  --threads 50 --overwrite 1
 ### 1.2 Softmask
-	  bedtools maskfasta -fi Ppr.FINAL.sort.fasta.masked -fo Ppr.FINAL.sort.softmask.fasta -bed Ppr_instagrall.polished.fa.mod.EDTA.TEanno.gff3 -soft
+	  bedtools maskfasta -fi polished.fasta.masked -fo polished.softmask.fasta -bed polished.fa.mod.EDTA.TEanno.gff3 -soft
 	  
 ## 2. Gene Structure Prediction
 ### 2.1 RNA-Seq Mapping and Trinity assembly
