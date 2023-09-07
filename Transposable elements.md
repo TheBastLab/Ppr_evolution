@@ -325,12 +325,11 @@ write.csv(noisonosim, file = paste0(j, "_RM_TRIPS.csv"))
 
 ###with R using R version 4.1.2 (2021-11-01)  
 ###gtools_3.9.4; stringr_1.5.0; tidyverse_2.0.0; reshape2_1.4.4; ggplot2_3.4.1; dplyr_1.1.1  
-###I made this myself, so please don't hate if something does not work
 
 
 ############################################
 ### RMTrips output to divsum-file format ###
-########## Viktoria Bednarski ##############
+########## Viktoria Bednarski ##############  
 ############################################
 
 
