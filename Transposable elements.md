@@ -2,11 +2,11 @@
 ###for help see https://github.com/ellenbell/FasTE  
 
 ## Step1 creating TE library  
-create a species specific TE library with EDTA; as usual  
+create a species specific TE library with EDTA 
 
 ## Step2 refine classifications with DeepTE  
 ### prerequisites  
-made conda env 'DeepTE' with python version 3.7.1, installed:  
+make conda env 'DeepTE' with python version 3.7.1, installed:  
 biopython 1.78  
 numpy 1.16.0  
 tensorflow 1.14.0  
@@ -36,16 +36,15 @@ sed -e 's/\(#\).*\(__\)/\1\2/'  [path to DeepTE.fasta] > [path to cleaned up lib
 ```
   
 ## Step4 RepeatMasker
-in my conda env repeatM (RepeatMasker version 4.1.2.p1)
+in conda env repeatM (RepeatMasker version 4.1.2.p1)
 ```sh
 mkdir repeatmasker_opt_dir
 ```
-essential
+essential command
 ```sh
 RepeatMasker /path/to/genome_assembly.fa -lib /path/to/opt_DeepTE.cleaned.fasta -dir repeatmasker_opt_dir
 ```
-###I tried the RepeatMasker step with the different options, the one recommended in FasTE pipeline, Shan's and Nadège colleague's options  
-###following are the consensus options which should be used  
+###custom options, (including recommendations from FasTE pipeline)  
   -pa(rallel)  
 	number of threads being used, give 30 - 40 depending on MOTOKO's workload  
 
@@ -67,7 +66,7 @@ RepeatMasker -pa 35 -a -s -nolow -no_is -dir repeatmasker_opt_dir -lib /path/to/
 ```
   
 ## Step5 RepeatMasker Clean-up
-###taken from ellenbell/FasTE without adaption, worked just fine
+###taken from ellenbell/FasTE without adaption
 ```sh
 awk '!/\*/' [repeatmasker.out] > [noasterisk_repeatmasker.out]
 ```
@@ -78,9 +77,8 @@ sed 's/-int//' [noasterisk_repeatmasker.out] > [tidy_noasterisk_repeatmasker.out
 
 ## Step6 Refinement with RM_Trips
 ###with R using R version 4.1.2  
-###I just changed the inputs i,j,k,l it asks for, then it worked seamlessly, the real deal was to install the packages needed for the script, helps to install some dependencies seperately  
+###just change the inputs i,j,k,l (it helps to install some dependencies seperately)  
 ###here is the copied RM_Trips script, better get it from https://github.com/ellenbell/FasTE/blob/main/RM_TRIPS.R  
-##if you want to copy it from here, then open it in edit first, because breaks are missing
 
 
 ### RM_TRIPS
@@ -332,6 +330,7 @@ write.csv(noisonosim, file = paste0(j, "_RM_TRIPS.csv"))
 
 ############################################
 ### RMTrips output to divsum-file format ###
+########## Viktoria Bednarski ##############
 ############################################
 
 
