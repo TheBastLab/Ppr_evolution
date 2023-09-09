@@ -9,6 +9,7 @@
 * [Assembly evaluation](https://github.com/TheBastLab/Ppr_evolution/blob/main/assembly_evaluation.md)
 * [Variant calling](https://github.com/TheBastLab/Ppr_evolution/blob/main/variant_calling.md)
 * [Genome annotation](https://github.com/TheBastLab/Ppr_evolution/blob/main/Genome_annotation.md)
+* [Population statistics](https://github.com/TheBastLab/Ppr_evolution/blob/main/population_statistics.md)
 * [Differential expression of alleles](https://github.com/TheBastLab/Ppr_evolution/blob/main/Differential_expression_of_alleles.md)
 * [Horizontal gene transfer](https://github.com/TheBastLab/Ppr_evolution/blob/main/Horizontal_gene_transfer.md)
 * [Wolbachia](https://github.com/TheBastLab/Ppr_evolution/blob/main/Wolbachia.md)
