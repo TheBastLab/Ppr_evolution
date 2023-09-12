@@ -1,5 +1,8 @@
 ## Population Statistics
 
+For steps 1~4, each individual is processed separately by an independent run of the Perl script; shown here is DE_T501 as an example.
+For step 5, each pair of individual (within population) is processed separately by an independent run of the Perl script; shown here is DE_T501 to DE_T502 as an example.
+
 ### Step 1: Obtain coverage distribution 
 ```
 perl complete_5pop_popstats_1_coverage_distribution.pl DE_T501
