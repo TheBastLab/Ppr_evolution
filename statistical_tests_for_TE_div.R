@@ -58,6 +58,26 @@ wilcox.test(df$Chr.7.Alt.1, df$Chr.7.Alt.2, paired = TRUE)
 wilcox.test(df$Chr.8.Alt.1, df$Chr.8.Alt.2, paired = TRUE)
 wilcox.test(df$Chr.9.Alt.1, df$Chr.9.Alt.2, paired = TRUE)
 
+# To plot the haplotype divergence:
+# Take the table and reduce it to Divergence and the deviation columns of the respective chromosomes, call it df
+# Reshape the dataframe from wide to long format
+df_long <- tidyr::gather(df, key = "Group", value = "Value", -Divergence)
+
+# Calculate mean values for each x-value across all subsets
+mean_values <- aggregate(Value ~ Divergence, data = df_long, FUN = mean)
+
+# Plot using ggplot2
+ggplot(df_long, aes(x = Divergence, y = Value, color = Group)) +
+  geom_line() +
+  geom_line(data = mean_values, aes(x = Divergence, y = Value, color = "Mean"), linetype = "dashed") +  # Add mean line
+  #scale_color_brewer(palette = "Set3") +  # Change palette as needed
+  #scale_color_manual(values = c(RColorBrewer::brewer.pal(9, "Set3"), "black")) +  # Change to a different palette or specify colors manually
+  scale_color_manual(values = c("#D2A271", "#FB7F00", "#F7E689", "#90D08B", "#C1DCDC", "#5BA8E6", "#E2B6FA", "#E27296", "#F15D59",  "black")) +
+  theme_minimal() +
+  labs(x = "Kimura substitution level", y = "Delta difference between haplotypes", color = "Data Subsets") +
+  scale_x_continuous(breaks = seq(min(df$Divergence), max(df$Divergence), by = 1)) +  # Adjust x-axis breaks
+  scale_y_continuous(breaks = seq(min(df_long$Value), max(df_long$Value), by = 0.1))  # Adjust y-axis breaks
+
 #######################################################################################################################################################
 # Testing via Anova
 
