@@ -184,7 +184,7 @@ anovsF3 <- function(response, v1, v2, v3, nbrep = 5000) {
 
 
 # Read table (note that the table contains the same information but is in long format)
-data <- read.csv("/path/to/TE_div_for_anova.csv", sep = "\t", dec = ",")
+data <- read.csv("/path/to/TE_div_for_anova.tsv", sep = "\t", dec = ".")
 
 data$divergence <- as.numeric(data$divergence)
 
