@@ -1,5 +1,5 @@
 # Genome annotation
-
+	Finally got the annotation file: Ppr.hap0.gff; protein sequenece: Ppr.hap0.pep; CDS file: Ppr.hap0.cds
 ## software version
 	EDTA v1.9.8 	
 	Bedtools Version: v2.26.0
