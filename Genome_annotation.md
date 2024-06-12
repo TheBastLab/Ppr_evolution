@@ -95,10 +95,10 @@
 
 ## 3. Functional Annotation
 ### 3.1 EggNOG-mapper 
-	emapper.py --cpu 10 -i hap0_UTR_longest.f.pep -o hap0_UTR_longest
+	emapper.py --cpu 10 -i hap0_UTR_longest.pep -o hap0_UTR_longest
  
 ### 3.2 InterProScan
-	interproscan.sh -i hap0_UTR_longest.f.pep -T ./tmp -goterms -iprlookup -pa
+	interproscan.sh -i hap0_UTR_longest.pep -T ./tmp -goterms -iprlookup -pa
 
 ### 3.3 Merge Go annotation
 	python GO_anno_from_tab.py -i hap0_UTR_longest.pep_1.tsv
@@ -106,10 +106,10 @@
 
 ### 3.4 clusterProfiler(working in R)
 	require(clusterProfiler)
-	egg<-read.delim("merged_GoBySinglecopy.rpkm1.filter.head")
+	egg<-read.delim("merged_Go")
 	data <- read.table("hap1tohap2.diff_rpkm1,header=F)
 	genes <- as.character(data$V1)
-	dea <- enricher(genes, TERM2GENE = egg[, c("GO_term", "Gene_ID")], TERM2NAME = egg[, c("GO_term", "Function")], pAdjustMethod= "BH",pvalueCutoff  = 0.05, qvalueCutoff  = 0.2)
+	dea <- enricher(genes, TERM2GENE = egg[, c("GO_term", "Gene_ID")], TERM2NAME = egg[, c("GO_term", "Function")], pAdjustMethod= "BH",pvalueCutoff  = 0.05, qvalueCutoff  = 0.05)
 	write.table(as.data.frame(dea),"go_dea_enrich.csv",sep="\t",row.names =F,quote=F)
 
 
