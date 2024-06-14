@@ -1,7 +1,7 @@
 # Wolbachia
 ## 1.Software version
-diamond  v0.9.21.122
-NGenomeSyn  v.141
+    diamond  v0.9.21.122
+    NGenomeSyn  v.141
 
 ## 2.Commandlines
 
