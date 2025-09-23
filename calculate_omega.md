@@ -61,6 +61,8 @@ Extracts protein sequences from the CDS.
 ## Step 7: Get Longest Peptide
 
 ```bash
+for i in *.fa; do b=$(echo $i|cut -f1 -d"."); awk -v var="$b" -F' '  '{print (/^>/ ? $1"_"$2"_indv:"var : $0)}' $i|sed 's/=/:/g' > $b.pep.reh.fa;done
+
 ls *fa | sed 's/.pep.reh.fa//g' > ../speciesList.txt
 
 for i in $(cat ../speciesList.txt); do 
