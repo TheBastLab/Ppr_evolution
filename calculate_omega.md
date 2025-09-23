@@ -37,7 +37,7 @@ Indexes the VCF files and performs intersection analysis to identify shared and 
 for i in germany_A germany_B japan_A japan_B; do 
     echo "bcftools consensus -o hyphy/ref/${i}.fa -f /RAID/Data/Mites/Genomes/Ppr/German_eiffel/hap0/Ppr.hap0.softmasked.fasta ${i}.DEJA.miss0.9.q0.55.vcf.gz";
 done | parallel --jobs 6 --eta
-
+```
 Obtains consensus sequences for each population.
 
 ## Step 5: Extract CDS
