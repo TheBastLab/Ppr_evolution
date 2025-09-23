@@ -66,7 +66,7 @@ for i in *.fa; do b=$(echo $i|cut -f1 -d"."); awk -v var="$b" -F' '  '{print (/^
 ls *fa | sed 's/.pep.reh.fa//g' > ../speciesList.txt
 
 for i in $(cat ../speciesList.txt); do 
-    echo "seqkit fx2tab -l ${i}.pep.reh.fa | sed 's/_gene:/\t/g' | sort -k2,2 -k4,4nr | sort -k2,2 -u -s | awk '{print \">\"\"\$1\";gene=\"\"\$2\";length=\"\"\$4\"\n\"\"\$3}' | sed 's/_indv:/;indv=/g' > longest.${i}.pep.reh.fa";
+    echo "seqkit fx2tab -l ${i}.pep.reh.fa |sed 's/_gene:/\t/g' |sort -k2,2 -k4,4nr|sort -k2,2 -u -s|awk '{print \">\""\$1"\";gene=\"\$2\";length=\"\$4\"\n\"\$3}'|sed 's/_indv:/;indv=/g' > longest.${i}.pep.reh.fa";
 done > get.longest.iso.cmd
 
 cat get.longest.iso.cmd | parallel --jobs 10 --eta
